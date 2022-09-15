@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,23 @@ namespace Tournee13092022.Modeles
         #endregion
 
         #region Methodes
-
+        /// <summary>
+        /// Cette methode doit effectuer le total 
+        /// des primes recues par le technicien
+        /// 1 - balayer le dictionnaire
+        /// 2 - ajouter à l'attribut resultat(Int) la prime obtenue (value)
+        /// </summary>
+        /// <returns> le montant total des primes</returns>
+        public int GetLesPrimes()
+        {
+            int resultat = 0;
+            foreach(var unDico in this.DicoCompetences)
+            {
+                resultat += unDico.Value;
+            }
+            //int x = this._dicoCompetences.Sum(x => x.Value);
+            return resultat;
+        }   
         #endregion
     }
 }

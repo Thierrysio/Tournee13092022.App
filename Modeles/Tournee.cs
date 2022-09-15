@@ -25,6 +25,7 @@ namespace Tournee13092022.Modeles
             _dateHeureDebut = dateHeureDebut;
             _coordGPS = coordGPS;
             _leTechnicien = leTechnicien;
+
             _lesInterventions = new List<Intervention>();
         }
 
@@ -40,7 +41,32 @@ namespace Tournee13092022.Modeles
         #endregion
 
         #region Methodes
+        public void AjoutIntervention(Intervention param)
+        {
+            this.LesInterventions.Add(param);
+        }
+/// <summary>
+/// 1- Balayer la collection des interventions de la tournée
+/// 
+/// </summary>
+/// <param name="param"></param>
+        public void AffecteInterventionUrgente(Intervention param)
+        {
+            int x = this.LesInterventions.IndexOf(this.InterventionEnCours());
+            this.LesInterventions.Insert(x+1, param);
+        }
+        public Intervention InterventionEnCours()
+        {
+            foreach (Intervention uneIntervention in this.LesInterventions)
+            {
+                if (uneIntervention.Statut.Equals("E"))
+                {
+                    return uneIntervention;
+                }
+            }
+            return null;
 
+        }
         #endregion
     }
 }
